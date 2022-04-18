@@ -55,7 +55,8 @@ const posts = [
         "created": "2021-03-05"
     }
 ];
-const container =document.getElementById("container")
+const container =document.getElementById("container");
+const counter = document.getElementById("likes_counter-1");
 
 posts.forEach((element) => {
     postsCard =
@@ -67,7 +68,7 @@ posts.forEach((element) => {
             </div>
             <div class="post-meta__data">
                 <div class="post-meta__author"> ${element.author.name}</div>
-                <div class="post-meta__time">${element.created}</div>
+                <div class="post-meta__time">${element.data}</div>
             </div>                    
         </div>
     </div>
@@ -90,16 +91,39 @@ posts.forEach((element) => {
     </div>            
 </div> 
     `
-    console.log(postsCard)
-    container.innerHTML+= postsCard
-});
-let like = document.querySelector('.like-button' ,'.js-like-button')
- console.log(like)
-//  let clickBtn ="";
-  like.addEventListener("click", changeColor);
 
-  function changeColor(){
-    like.setAttribute("class","like-button--liked");
+    container.innerHTML+= postsCard
+
+    //
+    let like = document.querySelector('.like-button' ,'.js-like-button')
+    like.addEventListener("click", changeColor);
+   
+
+    function changeColor(element){
+    let contatore = document.getElementById("like-counter-1");
+    like.setAttribute("class","like-button--liked like-button js-like-button");
+    contatore.innerHTML ++
    };
+   //
+
+});
+  
+   // cambio data
+   let data = new Date();
+   let day, month, year;
+   day = data.getDate()+ "-";
+   // console.log(day)
+   month = data.getMonth() + 1 +"-";
+   year = data.getFullYear();
+   document.querySelector(".post-meta__time").innerHTML = day + month+ year
+
+  
+
+
+   
+   
+   
+       
     
-// //   console.log(changeColor) 
+
+
